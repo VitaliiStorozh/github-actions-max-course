@@ -5,7 +5,7 @@ on:
       - main
       - dev
 env:
-  MONGODB_DB_NAME: ${{ env.MONGODB_DB_NAME }}
+  MONGODB_DB_NAME: ${{ vars.MONGODB_DB_NAME }}
 jobs:
   test:
     env:
