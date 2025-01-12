@@ -5,14 +5,14 @@ on:
       - main
       - dev
 env:
-  MONGODB_DB_NAME: testing
-  PORT: 3000
+  MONGODB_DB_NAME: ${{ env.MONGODB_DB_NAME }}
 jobs:
   test:
     env:
-      MONGODB_CLUSTER_ADDRESS: testing
-      MONGODB_USERNAME: testing
-      MONGODB_PASSWORD: testing
+      MONGODB_CLUSTER_ADDRESS: ${{ secrets.MONGODB_CLUSTER_ADDRESS }}
+      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+      PORT: 8080
     environment: testing
     runs-on: ubuntu-latest
     steps:
@@ -39,4 +39,4 @@ jobs:
       - name: Output information
         run: |
           echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
-            echo "MONGODB_DB_NAME: $MONGODB_DB_NAME"
+          echo "MONGODB_DB_NAME: $MONGODB_DB_NAME"
